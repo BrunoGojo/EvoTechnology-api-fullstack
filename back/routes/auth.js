@@ -28,4 +28,11 @@ router.post('/login', (req, res) => {
     })
 })
 
+
+router.get('/logout', (req, res) => {
+    // Para logout, simplesmente responder com sucesso
+    // Você pode invalidar o token no lado do cliente removendo-o do armazenamento   
+    res.status(200).send({ message: 'Logout com sucesso' });
+});
+
 module.exports = router;

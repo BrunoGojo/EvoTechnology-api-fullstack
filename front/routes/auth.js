@@ -35,4 +35,15 @@ router.post('/', (req, res) => {
         })
 })
 
+router.post('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.error('Erro ao fazer logout:', err);
+            return res.status(500).send({ error: 'Erro ao fazer logout' });
+        }
+
+        res.redirect('/');
+    });
+});
+
 module.exports = router;

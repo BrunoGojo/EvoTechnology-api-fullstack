@@ -61,9 +61,13 @@ router.post("/", (req, res) => {
 router.put("/:id", (req, res) => {
   const { id } = req.params
   const { name, race, colour, gender } = req.body
+  const token = req.session.token || ""
   fetch(url + id, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers: { 
+      "Content-Type": "application/json",
+      'Authorization': `Bearer ${token}`
+     },
     body: JSON.stringify({ name, race, colour, gender })
   }).then(async (res) => {
     if (!res.ok) {
